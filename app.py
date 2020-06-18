@@ -13,7 +13,6 @@ def index():
 
 @app.route('/search', methods=["POST"])
 def search():
-    # city_name = request.form["city_name"]
     city_weather = get_city_weather(request.form["city_name"])
     if type(city_weather) == str:
         return f"{city_weather}"
@@ -21,7 +20,6 @@ def search():
         return render_template("index.html", c=city_weather["city_info"], td=city_weather["today"],
                                five_day=[city_weather["yesterday"], city_weather["today"],city_weather["tomorrow"],
                                          city_weather["ht"],city_weather["dht"], city_weather["ddht"]])
-
 
 
 if __name__ == '__main__':
